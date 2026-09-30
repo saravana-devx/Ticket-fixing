@@ -1,0 +1,17 @@
+services:
+  agent:
+    build: .
+    env_file: .env
+    environment:
+      DB_PATH: /app/data/agent_runs.db
+      GIT_AUTHOR_NAME: ${GIT_AUTHOR_NAME:-bug-fix-agent}
+      GIT_AUTHOR_EMAIL: ${GIT_AUTHOR_EMAIL:-bug-fix-agent@users.noreply.github.com}
+      GIT_COMMITTER_NAME: ${GIT_AUTHOR_NAME:-bug-fix-agent}
+      GIT_COMMITTER_EMAIL: ${GIT_AUTHOR_EMAIL:-bug-fix-agent@users.noreply.github.com}
+    volumes:
+      - .:/app                # the agent's own code, fix-plan.md and data/
+      - ${TARGET_REPO_DIR:-../Test-app}:/Test-app             # the repo the agent fixes
+      - node_modules:/app/node_modules  # keep Linux-built deps (better-sqlite3) out of the host tree
+
+volumes:
+  node_modules:

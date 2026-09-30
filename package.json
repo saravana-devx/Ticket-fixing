@@ -1,0 +1,29 @@
+{
+  "name": "bug-fix-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "for f in src/*.test.ts; do echo \"== $f\"; tsx $f || exit 1; done"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.12",
+    "@langchain/google-genai": "^2.3.2",
+    "@langchain/groq": "^1.3.1",
+    "@langchain/langgraph": "^1.4.18",
+    "@octokit/rest": "^22.0.1",
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^18.0.4",
+    "simple-git": "^4.0.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

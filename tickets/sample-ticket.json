@@ -1,0 +1,7 @@
+{
+  "id": "42",
+  "title": "Null pointer crash when user has no profile photo",
+  "description": "When a user signs up without uploading a profile photo, the `/api/users/me` endpoint throws a 500 error. The crash happens because `user.profilePhoto.url` is accessed without checking if `profilePhoto` is null. Fix: add a null check and return a default avatar URL instead.",
+  "severity": "LOW",
+  "labels": ["bug", "api"]
+}
